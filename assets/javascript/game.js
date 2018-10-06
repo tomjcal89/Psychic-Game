@@ -1,60 +1,80 @@
 // establish vairables
 
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
-"j", "k", "l", "m", "n", "o", "p", "q", "r",
-"s", "t", "u", "v", "w", "x", "y", "z"];
+    "j", "k", "l", "m", "n", "o", "p", "q", "r",
+    "s", "t", "u", "v", "w", "x", "y", "z"];
+
 var lost = 0;
 var win = 0;
 var guesses = 9;
 var guessLetter = "";
 
-// pull elements by id
-var winning = document.getElementById("wins");
-var losing = document.getElementById("losses");
-var guess = document.getElementById("guessesLeft");
-var letterGuess = document.getElementById("lettersGuessed");
-
-
 //have computer come up with random letter
-function renderLetter () {
-var randLetter = letters[Math.floor(Math.random() * letters.length)];
-console.log(randLetter)
+function renderLetter() {
+    randLetter = letters[Math.floor(Math.random() * letters.length)];
+    console.log(randLetter)
 }
 
 //functions
 
 function updateWins() {
     document.querySelector("#wins").innerHTML = "Wins: " + win;
-  }
+}
 
-  function updateLosses() {
-      document.querySelector("#losses").innerHTML = "Losses: " + lost;
-  }
+function updateLosses() {
+    document.querySelector("#losses").innerHTML = "Losses: " + lost;
+}
 
-  function guessLetters() {
-      document.querySelector("#lettersGuessed").innerHTML = "Letters you have guessed: " + guessLetter;
-  }
-
+function updatedGuessesLeft() {
+    document.querySelector("#guessesLeft").innerHTML = "Guesses remaining: " + guesses;
+}
 
 
 updateLosses()
 updateWins()
-guessLetters()
+updatedGuessesLeft()
 renderLetter()
 
-//when you press an incorrect key
-document.onkeyup = function(event){
-   
-
-    //determining what key you pressed
+document.onkeyup = function (event) {
 
     var userInput = event.key.toLowerCase();
 
-    //have letter show up in "letters you have guessed"
+    if (userInput === randLetter) {
 
-        //have the "number of Guesses left go down by 1"
+    }
+
+    if (userInput === randLetter) {
+        win++;
+        updateWins();
+        renderLetter()
+    }
+
+    if (guesses <= 0) {
+        lost++;
+        updateLosses()
+    }
+    else {
+        guesses--;
+        updatedGuessesLeft();
+        document.getElementById("lettersGuessed").innerHTML += (userInput + ", ");
+    }
 
 }
+
+
+//if win goes up- reset guesses and 
+
+
+
+
+
+
+
+    //have letter show up in "letters you have guessed"
+
+    //have the "number of Guesses left go down by 1"
+
+
 
 
 // if number of guesses equal 0, add 1 to number of losses
