@@ -4,10 +4,13 @@ var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
     "j", "k", "l", "m", "n", "o", "p", "q", "r",
     "s", "t", "u", "v", "w", "x", "y", "z"];
 
+
+
 var lost = 0;
 var win = 0;
 var guesses = 9;
-var guessLetter = "";
+
+
 
 //have computer come up with random letter
 function renderLetter() {
@@ -15,7 +18,8 @@ function renderLetter() {
     console.log(randLetter)
 }
 
-//functions
+//making functions to add to wins and losses increase, making a reset for when theres a win or you run out of guesses
+//and making the number of guesses go down. 
 
 function updateWins() {
     document.querySelector("#wins").innerHTML = "Wins: " + win;
@@ -29,13 +33,20 @@ function updatedGuessesLeft() {
     document.querySelector("#guessesLeft").innerHTML = "Guesses remaining: " + guesses;
 }
 
-
+function reset() {
+    guesses = (9);
+    document.getElementById("lettersGuessed").innerHTML = (" ");
+}
+//activating functions
 updateLosses()
 updateWins()
 updatedGuessesLeft()
 renderLetter()
+reset()
 
-document.onkeyup = function (event) {
+//setting my key function for when you press a key, it will document what key you pressed and see if it matched the letter being rendered
+
+document.onkeydown = function (event) {
 
     var userInput = event.key.toLowerCase();
 
@@ -47,43 +58,29 @@ document.onkeyup = function (event) {
         win++;
         updateWins();
         renderLetter()
+        reset()
+
     }
 
-    if (guesses <= 0) {
+    if (guesses <= 1) {
         lost++;
-        updateLosses()
+        updateLosses();
+        updatedGuessesLeft();
+        renderLetter();
+        reset()
+
     }
     else {
         guesses--;
         updatedGuessesLeft();
-        document.getElementById("lettersGuessed").innerHTML += (userInput + ", ");
+        document.getElementById("lettersGuessed").innerHTML += (userInput + "  ");
+
     }
+
 
 }
 
+//still trying to figure out how to not make the correct letter show up on a new page. 
 
-//if win goes up- reset guesses and 
-
-
-
-
-
-
-
-    //have letter show up in "letters you have guessed"
-
-    //have the "number of Guesses left go down by 1"
-
-
-
-
-// if number of guesses equal 0, add 1 to number of losses
-
-//if number of guesses equal 0, have game restart
-    //number of guesses reset to 9
-    //guessed letters reset to nothing
-
-// if correct key is hit, number of wins goes up by 1
-    //letters guessed resets
-    //number of guesses left resets to 9
+//need to figure out how to make guesses go back to 9 once you lose and not stay at 1 for one last time. 
 

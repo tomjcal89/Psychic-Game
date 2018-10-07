@@ -1,0 +1,56 @@
+
+
+.jumbotron {
+    text-align: center;
+    background-color: rgb(9, 9, 65);
+    color: rgb(208, 214, 214);   
+   margin-bottom: 10px; 
+}
+
+h2 {
+    text-align: center;
+    background-color: rgb(102, 102, 102);
+    width: 200px;
+    margin: auto;
+    font-size: 150px;
+    font-family: sans-serif; 
+    border: 20px double rgb(255, 255, 255);
+    animation:blinkingText 5.0s infinite;
+}
+    @keyframes blinkingText{
+        0%{     color: orange;    }
+        49%{    color: red; }
+        50%{    color: teal; }
+        99%{    color: purple;  }
+        100%{   color: green;    }
+    }
+
+.container1 {
+    float: left;
+    background: navy;
+    color: white;
+    width: 400px;
+    height: 200px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    border: 10px solid black; 
+    margin-bottom: 2%;
+}
+
+.letterGuess {
+    float: right;
+    text-align: center;
+    background-color: navy; 
+    color: white;
+    border: 10px solid black;
+    width: 400px;
+    height: 200px;
+    font-size: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 2%;
+}
+
+#letterGuessed {
+    padding: 0;  
+}
