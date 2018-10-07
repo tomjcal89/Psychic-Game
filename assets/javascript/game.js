@@ -50,6 +50,7 @@ document.onkeydown = function (event) {
 
     var userInput = event.key.toLowerCase();
 
+
     if (userInput === randLetter) {
 
     }

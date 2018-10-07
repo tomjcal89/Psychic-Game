@@ -6,6 +6,7 @@ body{
 .jumbotron {
     text-align: center;
     background-color: rgb(9, 9, 65);
+    border: 20px ridge rgb(39, 67, 121); 
     color: rgb(208, 214, 214);   
    margin-bottom: 10px; 
 
